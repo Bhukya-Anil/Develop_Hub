@@ -8,7 +8,7 @@ const Myprofile = () => {
     const [data,setdata]=useState([]);
     const [review,setreview]=useState([]);
     useEffect(()=> {
-      axios.get('http://localhost:5000/myprofile',{
+      axios.get(`${process.env.REACT_APP_API_URL}/myprofile`,{
         headers : {
           'x-token' : localStorage.getItem('token')
         }
@@ -16,7 +16,7 @@ const Myprofile = () => {
        .catch((error) => {
         console.error(error);
       })
-      axios.get('http://localhost:5000/myreview',{
+      axios.get(`${process.env.REACT_APP_API_URL}/myreview`,{
         headers : {
           'x-token' : localStorage.getItem('token')
         }

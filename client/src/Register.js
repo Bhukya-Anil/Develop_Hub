@@ -19,7 +19,7 @@ const Register = () => {
   const submitHandler = e=>{
     e.preventDefault();
     console.log(data);
-    axios.post("http://localhost:5000/register",data).then((resp)=>{
+    axios.post(`${process.env.REACT_APP_API_URL}/register`,data).then((resp)=>{
          window.alert("Succesfully Registered!!");
     })
     .catch((err)=>{

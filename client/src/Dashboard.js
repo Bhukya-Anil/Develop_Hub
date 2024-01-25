@@ -1,12 +1,14 @@
 import React,{useState,useEffect} from 'react'
 import {Link, Navigate} from 'react-router-dom'
 import axios from 'axios'
+import dotenv from "dotenv";
+dotenv.config();
 import './index.css';
 
 const Dashboard = () => {
   const [data,setdata]=useState([]);
   useEffect(()=> {
-    axios.get('http://localhost:5000/allprofiles',{
+    axios.get(`${process.env.REACT_APP_API_URL}/allprofiles`,{
       headers : {
         'x-token' : localStorage.getItem('token')
       }

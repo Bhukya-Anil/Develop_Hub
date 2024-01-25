@@ -16,7 +16,7 @@ const Login = () => {
       }
       const submitHandler = e =>{ 
         e.preventDefault();
-        axios.post('http://localhost:5000/login',data).then(
+        axios.post(`${process.env.REACT_APP_API_URL}/login`,data).then(
             res => {localStorage.setItem('token',res.data.token); setauth(true)} //storing in local storage
         )
       }

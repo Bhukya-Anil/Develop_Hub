@@ -2,7 +2,8 @@ import React,{useState} from 'react'
 import {Link,useParams} from 'react-router-dom'
 import axios from 'axios'
 import './index.css';
-
+import dotenv from "dotenv";
+dotenv.config();
 const Indprofile = () => {
   const params=useParams();
   const [rating,setrating]=useState();
@@ -10,7 +11,7 @@ const Indprofile = () => {
 
   const submitHandler = e =>{
     e.preventDefault();
-    axios.get('http://localhost:5000/myprofile',{
+    axios.get(`${process.env.REACT_APP_API_URL}/myprofile`,{
       headers:{
           'x-token' : localStorage.getItem('token')
       }
@@ -22,7 +23,7 @@ const Indprofile = () => {
     taskworker:params.id,
     rating,
   }
-  axios.post('http://localhost:5000/addreview',review,{
+  axios.post(`${process.env.REACT_APP_API_URL}/addreview`,review,{
         headers:{
           'x-token' : localStorage.getItem('token')
         }
