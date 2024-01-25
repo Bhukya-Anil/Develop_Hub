@@ -10,7 +10,14 @@ const app = express();
 require('dotenv').config();
 const MONGO_URL = process.env.MONGO_URL;
 const PORT=process.env.PORT || 8000;
-mongoose.connect(MONGO_URL).then(
+
+const options = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 5000,
+  };
+
+mongoose.connect(MONGO_URL,options).then(
     ()=> console.log('DB connected')
 )
 
